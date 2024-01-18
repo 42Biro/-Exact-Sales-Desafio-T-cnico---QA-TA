@@ -1,0 +1,61 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+from selenium.webdriver.common.keys import Keys
+
+import chromedriver_autoinstaller   
+import time
+
+
+def aa():
+    options = Options()
+    
+    driver = webdriver.Chrome(options=options)
+   
+    end_bp = "https://demo.automationtesting.in/Register.html"
+    driver.get(end_bp)
+    time.sleep(10)
+    
+    #nome
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[1]/div[1]/input")
+    elem.send_keys("Lucas")
+    time.sleep(2)
+    #sobrenome
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[1]/div[2]/input")
+    elem.send_keys("Carvalho")
+    time.sleep(2)
+    #endereco
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[2]/div/textarea")
+    elem.send_keys("Rua Koesa, 415, Kobrasol, São José, SC")
+    time.sleep(2)
+
+    #email
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[3]/div[1]/input")
+    elem.send_keys("lucas.cruz@exactsales.com.br")
+    time.sleep(2)
+
+    #telefone
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[4]/div/input")
+    elem.send_keys("48996297837")
+    time.sleep(2)
+
+    
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[8]/div/select/option[11]").click()
+    time.sleep(2)
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[5]/div/label[1]/input").click()
+    #data de nascimento
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[11]/div[1]/select/option[80]").click()
+    time.sleep(1)
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[11]/div[2]/select/option[3]").click()
+    time.sleep(1)
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[11]/div[3]/select/option[2]").click()
+    time.sleep(2)
+
+    
+    elem = driver.find_element("xpath", "/html/body/section/div/div/div[2]/form/div[12]/div/input")
+    elem.send_keys("senha")
+
+    time.sleep(20)
+
+if __name__ == '__main__':
+    aa()
