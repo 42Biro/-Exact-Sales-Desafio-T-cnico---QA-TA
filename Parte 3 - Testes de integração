@@ -1,0 +1,33 @@
+import requests
+import webbrowser
+import json
+
+#Colocar o Token fornecido no site
+headers = {
+  "Authorization": "Bearer e69fd5ba2aa320ea99f4d6cebca6d8a6d611baad46ee8121f42355b190fabffc"
+}
+
+user = {
+  "name": "Lucas",
+  "email": "lucascruz9999@gmail.com",
+  "gender": "male",
+  "status": "active"
+}
+
+response = requests.post("https://gorest.co.in/public/v2/users", json=user, headers=headers)
+
+
+# Status da resposta
+if response.status_code == 201:
+    #Extrai o id da response
+    dicionario = response.json()  
+    id = str(dicionario["id"])
+    # id extraido para concatenar com a url e apresentar os dados de usuario criado
+    url = "https://gorest.co.in/public/v2/users/" + id  
+    print("Usuário criado com sucesso!")
+    webbrowser.open(url)
+    print(response.json())
+else:
+  # Exiba uma mensagem de erro
+  print("Erro ao criar usuário: " + response.reason)
+  print(response.json())
